@@ -1,0 +1,39 @@
+name:                minjs
+
+default-extensions:
+ - OverloadedStrings
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  dependencies:
+  - text
+  - bytestring
+
+executables:
+  minjs-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - minjs
+
+tests:
+  minjs-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - minjs
+    - tasty
+    - tasty-hunit
+    - text
+    - bytestring
